@@ -29,8 +29,10 @@ class nova():
         sess = session.Session(auth=auth)
         nova_client = client.Client(self.version, session=sess)
         return nova_client
+
 if __name__ == "__main__":
-    client = nova("2.1","http://192.168.1.200:5000/v3","admin","b42a6657ab1d4399","admin").initClient()
+    client = nova("2.1","http://192.168.1.200:5000/v3","admin","admin","admin").initClient()
     servers = client.servers.list()
     for server in servers:
         print server._info
+    print client.servers.find(id="0e965833-b514-47e4-8186-dc1f788e5853")
